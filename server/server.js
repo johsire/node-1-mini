@@ -1,11 +1,15 @@
-const express = reqire ('express');
-const bodyParser = require ('body-parser');
+var express = require("express");
 
-const bc = require ('./controllers/books_controller');
+var bodyParser = require('body-parser');
 
-const app = express();
+var bc = require('./controllers/books_controller.js');
+
+var app = express();
 
 app.use(bodyParser.json());
+
+app.use(express.static(__dirname + '/server'));
+
 
 app.get('/api/books', bc.read);
 app.post('/api/books', bc.create);
